@@ -1,0 +1,405 @@
+1 FizzBuzz: done
+ Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" instead of the number, and for multiples of five, print "Buzz". For numbers that are multiples of both three and five, print "FizzBuzz".
+
+2. Palindrome Checker: done
+ Write a function that takes a string as input and returns true if the string is a palindrome (reads the same forwards and backwards), and false otherwise. Ignore non-alphanumeric characters and case sensitivity.
+
+3. Factorial Calculator: done
+ Write a function that calculates the factorial of a given number. The factorial of a non-negative integer n is the product of all positive integers less than or equal to n.
+
+4. Sum of Multiples: done
+ Write a function that takes two numbers as input, num1 and num2, and calculates the sum of all the multiples of num1 and num2 up to a given limit.
+
+5. Reverse Array: done
+ Write a function that takes an array as input and returns a new array with the elements in reverse order. Do not modify the original array.
+
+6. Anagram Checker: done
+ Build a function that takes two strings as input and determines whether they are anagrams (contain the same characters in a different order).
+
+7. Caesar Cipher: done
+ Implement a function that takes a string and a shift value, and returns the string with each letter shifted by the specified value (e.g., "ABC" shifted by 1 becomes "BCD").
+
+8. Shopping Cart: not done
+  - This challenge requires you to create a shopping cart class that allows users to perform various operations like adding items, removing items, calculating the total price, and applying discounts.
+  - Start by defining the class and its properties, such as an array to store the items in the cart and a variable to keep track of the total price.
+  - Implement methods for adding items to the cart, removing items, and updating the total price accordingly.
+  - Consider how you will handle discounts, whether they are percentage-based or fixed discounts, and how they will be applied to the cart items.
+    - Test Case 1: Add items to the cart and check the total price.
+    - Test Case 2: Remove items from the cart and check the total price.
+    - Test Case 3: Apply a percentage-based discount and verify the new total price.
+    - Test Case 4: Apply a fixed discount and verify the new total price.
+
+
+
+9. Password Generator: not done
+  - A password generator creates strong passwords that meet specific criteria like minimum length, inclusion of uppercase letters, lowercase letters, numbers, and special characters.
+  - Design a function that takes criteria as input and generates a random password accordingly.
+  - Use randomization and string manipulation techniques to create passwords that meet the specified criteria.
+  - Allow users to customize the password length and choose which character types (uppercase, lowercase, numbers, special characters) to include in the generated password.
+    - Test Case 1: Generate a password with a minimum length of 8 characters, including uppercase letters, lowercase letters, numbers, and special characters.
+    - Test Case 2: Generate a password with a minimum length of 12 characters, including uppercase letters and numbers only.
+    - Test Case 3: Generate a password with a minimum length of 6 characters, including lowercase letters and special characters only.
+
+10. Binary Search: not done
+  - Binary search is an efficient algorithm to find a specific element in a sorted array.
+  - Implement a function that performs a binary search to find the target element in the sorted array.
+  - The binary search algorithm compares the target element with the middle element of the array, and based on the comparison, narrows down the search range by half in each iteration.
+  - Continue the search until the target element is found or the search range becomes empty.
+    - Test Case 1: Search for an element that exists in the middle of the sorted array.
+    - Test Case 2: Search for an element that exists at the beginning of the sorted array.
+    - Test Case 3: Search for an element that exists at the end of the sorted array.
+    - Test Case 4: Search for an element that does not exist in the sorted array.
+
+11. Word Frequency Counter: done
+ Write a program that counts the frequency of each word in a given text and displays the results.
+
+12. Chess Board Validator: not done
+  - This challenge involves building a function that checks the validity of a given chessboard configuration based on the rules and movements of each chess piece (e.g., pawn, knight, bishop, rook, queen, king).
+  - You'll need to define the rules for each chess piece's movement and ensure that they are followed correctly in the given configuration.
+  - Implement a function that takes the chessboard configuration as input and checks each piece's movements to see if they are valid.
+  - Consider edge cases, such as checking for checkmate or stalemate conditions.
+    - Test Case 1: Check a valid chessboard configuration with all pieces correctly positioned and following their respective rules.
+    - Test Case 2: Check an invalid chessboard configuration with pieces placed in illegal positions or not following their respective rules.
+    - Test Case 3: Check a chessboard configuration with only one king on each side, and no other pieces.
+
+13. Image Gallery: not done
+  - This challenge involves creating a web application for managing images, including uploading, viewing, filtering, and sorting.
+  - Implement a server-side component to handle image uploads and data storage.
+  - Create a front-end interface that allows users to view and interact with the images.
+  - Implement pagination to handle large numbers of images efficiently.
+ - Add filtering and sorting options to allow users to search for specific images or arrange them based on different criteria.
+ - For each challenge, break down the problem into smaller tasks, and tackle them one by one. Research and learn about the necessary techniques, algorithms, or technologies that you may need to complete each task effectively.
+    - Test Case 1: Upload multiple images and verify that they appear in the gallery.
+    - Test Case 2: Filter images based on specific criteria (e.g., tags, date) and verify that the correct images are displayed.
+    - Test Case 3: Sort images based on different criteria (e.g., date, name) and verify that the sorting is accurate.
+    - Test Case 4: Navigate through different pages of images using pagination and verify that the correct images are displayed on each page.
+
+14. Sum of Two Numbers: done
+ Write a function that takes two numbers as input and returns their sum.
+
+15. Reverse a String: done
+ Build a function that reverses a given string. For example, inputting "Hello" should return "olleH".
+
+16. Even or Odd: done
+ Write a function that determines whether a given number is even or odd.
+
+17. Calculate Average: done
+ Develop a function that takes an array of numbers as input and returns the average value.
+
+18. Find Maximum Value: done
+ Create a function that finds and returns the maximum value in an array of numbers.
+
+19. Check Prime Number: done
+ Build a function that checks whether a given number is prime (only divisible by 1 and itself).
+
+20. Count Vowels: done
+ Develop a function that counts the number of vowels (a, e, i, o, u) in a given string.
+Title Case: Write a function that takes a sentence as input and converts it to title case, where the first letter of each word is capitalized.
+
+21. Fibonacci Sequence: done
+ Implement a function that generates the Fibonacci sequence up to a given number of terms.
+
+23. Sorting Algorithms: done - need further work.
+ Implement a sorting algorithm of your choice (e.g., Bubble Sort, Selection Sort, Merge Sort) to sort an array of numbers in ascending order.
+
+24. Password Strength Checker: done
+ Develop a function that checks the strength of a password based on certain criteria (e.g., length, presence of uppercase letters, lowercase letters, numbers, special characters).
+
+25. Binary to Decimal Converter: done - look into minor addon
+ Write a function that converts a binary number to its decimal equivalent.
+
+26. Unique Elements: done
+ Implement a function that takes an array as input and returns a new array containing only the unique elements from the original array.
+
+27. Palindromic Substrings: done
+ Create a function that finds and returns all palindromic substrings within a given string.
+
+28. Prime Factors: done
+ Write a function that calculates and returns the prime factors of a given number.
+
+Challenge 29: Distance Travel Calculator: done
+  - Summary: You are going on a road trip and want to calculate how many days it will take to reach your destination based on your daily travel distance. Write a function called calculateTravelDays that takes three parameters:
+
+    totalDistance (number) - The total distance you need to travel (in kilometers).
+    dailyDistance (number) - The distance you can cover in a day (in kilometers).
+    restDays (number) - The number of rest days you plan to take during the trip.
+  - The function should calculate and return the number of days it will take for you to reach your destination, considering your travel distance per day and the rest days you plan to take.
+
+Challenge 30: Savings Goal Tracker: done
+  - Summary: You want to save a certain amount of money and want to track how many months it will take to reach your savings goal. Write a function called calculateSavingsMonths that takes three parameters:
+
+    savingsGoal (number) - The amount of money you want to save (in dollars).
+    monthlySavings (number) - The amount of money you can save per month (in dollars).
+    interestRate (number) - The annual interest rate on your savings account (in percentage).
+  - The function should calculate and return the number of months it will take for you to reach your savings goal, considering your monthly savings and the interest earned on your savings account.
+
+
+ROUND TWO CHALLENGES
+
+1. Capitalize Words: updated and loved.
+
+Summary:
+Write a function that takes a sentence as input and capitalizes the first letter of each word.
+
+Requirements:
+- You are given a string containing a sentence with words separated by spaces.
+- Implement a function to capitalize the first letter of each word in the sentence and return the modified sentence.
+
+Test Cases:
+Input: "hello world"
+Output: "Hello World"
+
+Input: "this is a test"
+Output: "This Is A Test"
+
+
+2. Array Chunking: updated (added two modes - modify or not)
+
+Summary:
+Write a function that takes an array and a chunk size as input and divides the array into sub-arrays of the given size.
+
+Requirements:
+- You are given an array of integers and a positive integer chunk size.
+- Implement a function to split the array into sub-arrays, each containing at most 'chunk size' number of elements, and return a new array containing these sub-arrays.
+
+Test Cases:
+Input: [1, 2, 3, 4, 5, 6, 7, 8], chunkSize = 3
+Output: [[1, 2, 3], [4, 5, 6], [7, 8]]
+
+Input: [10, 20, 30, 40, 50], chunkSize = 2
+Output: [[10, 20], [30, 40], [50]]
+
+
+3. Majority Element: need a topic to learn (algorithm)
+
+Summary:
+Given an array of integers, find the majority element (appears more than n/2 times, where n is the length of the array).
+
+Requirements:
+- You are given an array of integers.
+- Implement a function to find the majority element in the array and return it. If there is no majority element, return -1.
+
+Test Cases:
+Input: [3, 3, 4, 2, 4, 4, 2, 4, 4]
+Output: 4
+
+Input: [1, 2, 3, 4, 5]
+Output: -1
+
+
+4. Reverse an Integer: learn about mathematical conversions
+
+Summary:
+Write a function that takes an integer as input and returns the integer in reverse order.
+
+Requirements:
+- You are given an integer as input.
+- Implement a function to reverse the digits of the integer and return the reversed integer.
+
+Test Cases:
+Input: 12345
+Output: 54321
+
+Input: -987
+Output: -789
+
+
+5. Validate Parentheses: updated to handle edge case;
+
+Summary:
+Write a function to determine if a given string of parentheses (including curly braces and square brackets) is valid.
+
+Requirements:
+- You are given a string containing only parentheses, curly braces, and square brackets.
+- Implement a function to check if the parentheses are balanced and return true if they are, or false if they are not.
+
+Test Cases:
+Input: "{[()()]}"
+Output: true
+
+Input: "[{()}[{}])]"
+Output: false
+
+
+6. Unique Characters in a String II: left unchanged but has second solution option
+
+Summary:
+Write a function that determines if a given string has all unique characters without using additional data structures.
+
+Requirements:
+- You are given a string containing only printable ASCII characters.
+- Implement a function to check if the string has all unique characters and return true if it does, or false if there are any repeated characters.
+
+Test Cases:
+Input: "hello"
+Output: false
+
+Input: "world"
+Output: true
+
+
+7. Missing Letters: reviewed but a weird case in mind.
+
+Summary:
+Write a function that finds the missing letter in a given sequence of consecutive letters.
+
+Requirements:
+- You are given a string containing a sequence of consecutive lowercase letters (in alphabetical order), with one letter missing.
+- Implement a function to find the missing letter and return it.
+
+Test Cases:
+Input: "abcdefh"
+Output: "g"
+
+Input: "jklmno"
+Output: "p"
+
+
+8. Pig Latin: done. updated need review
+
+Summary:
+Write a function that translates a given word into Pig Latin.
+
+Requirements:
+- You are given a word (string) as input.
+- Implement a function to translate the word into Pig Latin following the rules provided in the challenge description.
+
+Test Cases:
+Input: "hello"
+Output: "ellohay"
+
+Input: "apple"
+Output: "appleway"
+
+The rules for converting a word into Pig Latin are as follows:
+
+1. For words that begin with consonants or consonant clusters:
+   - Move the initial consonant(s) or cluster of consonants to the end of the word.
+   - Add "ay" to the end of the word.
+
+Example: "happy" → "appyhay", "glove" → "oveglay", "smile" → "ilesmay"
+
+2. For words that begin with vowels:
+   - Simply add "way" to the end of the word.
+
+Example: "egg" → "eggway", "apple" → "appleway", "island" → "islandway"
+
+Note: In some variations, "y" is treated as a consonant if it appears at the beginning of a word, and as a vowel otherwise.
+
+9. Simple Calculator: done awaiting review.
+
+Summary:
+Write a function that takes two numbers and an operator (+, -, *, /) as input and performs the corresponding arithmetic operation.
+
+Requirements:
+- You are given two numbers and a valid operator as input.
+- Implement a function to perform the arithmetic operation on the numbers and return the result.
+
+Test Cases:
+Input: 5, 3, '+'
+Output: 8
+
+Input: 10, 2, '/'
+Output: 5
+
+
+10. Find the Second Largest Number: reviewed
+
+Summary:
+Write a function that finds the second largest number in an array of integers.
+
+Requirements:
+- You are given an array of integers with at least two elements.
+- Implement a function to find the second largest number in the array and return it.
+
+Test Cases:
+Input: [5, 2, 8, 3, 7]
+Output: 7
+
+Input: [10, 20, 5, 30, 15]
+Output: 20
+
+
+11. Sum of Even Fibonacci Numbers: reviewed
+
+Summary:
+Write a function that calculates the sum of all even Fibonacci numbers up to a given limit.
+
+Requirements:
+- You are given a positive integer as input.
+- Implement a function to calculate and return the sum of all even Fibonacci numbers up to the given limit.
+
+Test Cases:
+Input: 10
+Output: 10  (2 + 8)
+
+Input: 100
+Output: 44  (2 + 8 + 34)
+
+
+12. Prime Factorization: done awaiting review.
+
+Summary:
+Write a function that finds the prime factors of a given integer.
+
+Requirements:
+- You are given a positive integer as input.
+- Implement a function to find and return the prime factors of the input integer in ascending order.
+
+Test Cases:
+Input: 12
+Output: [2, 2, 3]
+
+Input: 25
+Output: [5, 5]
+
+
+13. Consonant Count: reviewed
+
+Summary:
+Write a function that counts the number of consonants in a given string.
+
+Requirements:
+- You are given a string containing only printable ASCII characters.
+- Implement a function to count the number of consonants in the string and return the count.
+
+Test Cases:
+Input: "hello"
+Output: 3
+
+Input: "world"
+Output: 4
+
+
+14. Binary to Decimal: previously done
+
+Summary:
+Write a function that converts a binary number (as a string) to its decimal equivalent.
+
+Requirements:
+- You are given a binary number represented as a string.
+- Implement a function to convert the binary number to its decimal equivalent and return it as an integer.
+
+Test Cases:
+Input: "1010"
+Output: 10
+
+Input: "111001"
+Output: 57
+
+
+15. Palindrome Pairs: done awaiting reviews
+
+Summary:
+Given a list of words, find all pairs of distinct indices (i, j) such that the concatenation of the two words is a palindrome.
+
+Requirements:
+- You are given a list of words (strings).
+- Implement a function to find and return a list of pairs of indices (i, j) such that the concatenation of words[i] and words[j] is a palindrome.
+
+Test Cases:
+Input: ["code", "edoc", "da", "ad"]
+Output: [[0, 1], [1, 0], [2, 3], [3, 2]]
+
+Input: ["race", "car", "run", "nur"]
+Output: [[0, 1], [1, 0]]

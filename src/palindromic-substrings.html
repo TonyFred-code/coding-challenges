@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindromic Substrings</title>
+  </head>
+  <body>
+    <h2>Palindromic Substrings</h2>
+    <p>Task: Create a function that finds and returns all palindromic substrings within a given string.</p>
+
+    <script>
+      // utility function
+      function checkPalindrome(string) {
+        if (typeof string !== "string") {
+          console.error("Input must be a string");
+          return false;
+        }
+
+        const alphanumericString = string.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+        const reversedString = alphanumericString.split("").reverse().join("");
+
+        return alphanumericString === reversedString;
+      }
+
+      function palindromicSubstring(sentence) {
+        if (typeof sentence !== "string") {
+          console.error("Input must be a string");
+          return false;
+        }
+
+        const objTemp = {};
+        let arrTemp = sentence.trim().replace(/[^\s+\w-*]/g, "").split(" ");
+        for (let i = 0; i <  arrTemp.length; i++) {
+          if (!objTemp[arrTemp[i]]){
+            if (checkPalindrome(arrTemp[i])) {
+              objTemp[arrTemp[i]] = true;
+            } else {
+              objTemp[arrTemp[i]] = false;
+            }
+          }
+        }
+
+        return objTemp;
+
+
+      }
+    </script>
+  </body>
+</html>

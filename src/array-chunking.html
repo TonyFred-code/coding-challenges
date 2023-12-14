@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Chunking</title>
+  </head>
+  <body>
+    <h2>Challenge: Array Chunking</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Write a function that takes an array and a chunk size as input and divides the
+        array into sub-arrays of the given size
+      </p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given an array of integers and a positive integer chunk size</p>
+      <p>
+        Implement a function to split the array into sub-arrays, each containing at most
+        "chunk size" number of elements, and return a new array containing these
+        sub-arrays.
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>Input: [1, 2, 3, 4, 5, 6, 7, 8], chunkSize = 3</p>
+      <p>Output: [[1, 2, 3], [4, 5, 6], [7, 8]]</p>
+
+      <p>Input: [10, 20, 30, 40, 50], chunkSize = 2</p>
+      <p>Output: [[10, 20], [30, 40], [50]]</p>
+    </section>
+
+    <script>
+      // utility function
+      function arrayChunking(array, chunkSize, modify = false) {
+        if (!Array.isArray(array) || array.length === 0) {
+          throw new Error("Invalid input. Must be a non-empty array.");
+        }
+        if (typeof chunkSize !== "number" || Number.isNaN(chunkSize) || chunkSize <= 0) {
+          throw new Error(
+            "Invalid input. chunkSize must be a valid non-zero positive integer."
+          );
+        }
+
+        let chunkedArr = [];
+        let index = 0;
+        // splice will modify array
+        if (modify) {
+          while (array.length !== 0) {
+            chunkedArr.push(array.splice(0, chunkSize));
+          }
+        } else {
+          // to avoid modification of array
+          while (index < array.length) {
+            chunkedArr.push(array.slice(index, index + chunkSize));
+            index += chunkSize;
+          }
+        }
+
+        return chunkedArr;
+      }
+
+      //   example usage
+      function getRndInt(max = 10, min = 0) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      function useUtility(modify = false, arrayLength = 11, chunkSize = 2) {
+        let rndArray = [];
+        for (let i = 0; i < arrayLength; i++) {
+          rndArray.push(getRndInt(30));
+        }
+
+        console.log(rndArray);
+        let chunkedArray = arrayChunking(rndArray, chunkSize, modify);
+        console.log(chunkedArray);
+        console.log(rndArray);
+      }
+    </script>
+  </body>
+</html>

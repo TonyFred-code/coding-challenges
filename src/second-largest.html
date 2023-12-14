@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second Largest Number</title>
+  </head>
+  <body>
+    <h2>Challenge: Find the Second Largest Number</h2>
+
+    <section>
+      <h3>Summary</h3>
+      <p>Write a function that finds the second largest number in an array of integers</p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given an array of integers with at least tow elements</p>
+      <p>
+        Implement a function to find the second largest number in the array and return it.
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: [5, 2, 8, 3, 7]<br />
+        Output: 7
+      </p>
+      <p>
+        Input: [10, 20, 5, 30, 15]<br />
+        Output: 20
+      </p>
+    </section>
+
+    <script>
+      function secondLargestNumber(array) {
+        if (!Array.isArray(array) || array.length < 2) {
+          throw new Error(
+            "Invalid input. Parameter must be a non-empty array with at least two elements."
+          );
+        }
+
+        let largest = Number.NEGATIVE_INFINITY;
+        let secondLargest = Number.NEGATIVE_INFINITY;
+
+        for (let num of array) {
+          if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+          } else if (num > secondLargest && num < largest) {
+            secondLargest = num;
+          }
+        }
+
+        return secondLargest;
+      }
+    </script>
+  </body>
+</html>

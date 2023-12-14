@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse an Integer</title>
+  </head>
+  <body>
+    <h2>Challenge: Reverse an Integer</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Write a function that takes an integer as input and returns the integer in reverse
+        order.
+      </p>
+    </section>
+
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given an integer as input.</p>
+      <p>
+        Implement a function to reverse the digits of the integer and return the reversed
+        integer.
+      </p>
+    </section>
+
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: 12345<br />
+        Output: 54321
+      </p>
+
+      <p>
+        Input: -987<br />
+        Output: -789
+      </p>
+    </section>
+
+    <script>
+      // learn how mathematical conversion occurs
+      function reverseInteger(integer) {
+        if (
+          Number.isNaN(integer) ||
+          typeof integer !== "number" ||
+          !Number.isInteger(integer)
+        ) {
+          throw new Error("Invalid input. Must be a valid integer.");
+        }
+
+        let reversed = 0;
+        let isNegative = false;
+        if (integer < 0) {
+          isNegative = true;
+          integer = -integer; // Make it positive to simplify the process
+        }
+
+        while (integer > 0) {
+          reversed = reversed * 10 + (integer % 10);
+          integer = Math.floor(integer / 10);
+        }
+
+        return isNegative ? -reversed : reversed;
+      }
+    </script>
+  </body>
+</html>

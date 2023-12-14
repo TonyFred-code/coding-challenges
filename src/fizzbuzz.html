@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FizzBuzz</title>
+  </head>
+  <body>
+    <h2>FizzBuzz</h2>
+    <p>
+      Task: Write a program that prints the numbers from 1 to 100. But for multiples of
+      three, print "Fizz" instead of the number, and for multiples of five, print "Buzz".
+      For numbers that are multiples of both three and five, print "FizzBuzz".
+    </p>
+    <ol class="output"></ol>
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function
+      function fizzBuzz(number) {
+
+          if (number % 3 === 0 && number % 5 === 0) {
+            return "FizzBuzz";
+          } else if (number % 3 === 0) {
+            return "Fizz";
+          } else if (number % 5 === 0) {
+           return "Buzz"
+          } else {
+            return number;
+          }
+      }
+
+      // example usage
+      function useUtility(end = 20, start = 1) {
+        while (output.firstChild) {
+          output.removeChild(output.firstChild);
+        }
+
+        const list = document.createElement("ul");
+        for (let i = start; i <= end; i++) {
+           let state = fizzBuzz(i);
+           const item = document.createElement("li");
+
+           if (state === "FizzBuzz") {
+            item.textContent = `${i} => FizzBuzz`;
+           } else if (state === "Fizz") {
+            item.textContent = `${i}  => Fizz`;
+           } else if (state === "Buzz") {
+            item.textContent = `${i}  => Buzz`;
+           } else {
+            item.textContent = `${i} => ${i}`;
+           }
+
+           list.appendChild(item);
+        }
+
+        output.appendChild(list);
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

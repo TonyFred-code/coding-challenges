@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse Array</title>
+  </head>
+  <body>
+    <h2>Reverse Array</h2>
+    <p>
+      Task: Write a function that takes an array as input and returns a new array with the
+      elements in reverse order. Do not modify the original array.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function - method 1
+      // function reverseArray(array) {
+      //   const reverse = [];
+      //   for (let i = array.length; i > 0; i--) {
+      //     const removed = array.slice(i - 1, i)[0];
+      //     reverse.push(removed);
+      //   }
+      //   console.log(`Initial array = ${array}`);
+      //   console.log(`Reversed array = ${reverse}`);
+      //   return reverse;
+      // }
+      /* utility function - method 2 */
+      function reverseArray(array) {
+        if (!(Array.isArray(array))) {
+          throw new Error("Invalid input. Parameter must be a non-empty array")
+        } else if ( array.length === 0) {
+          console.error("Can't reverse an empty array");
+          return;
+        }
+
+        const reverse = array.toReversed()
+        return reverse;
+      }
+
+      // use utility function
+      function useUtility() {
+        const arr = ["egg", "bacon", "sauce", "meat", "nothing", "another", "hello"];
+
+        const reverse = reverseArray(arr);
+
+        const reversed = document.createElement("p");
+        const initial = document.createElement("p");
+
+        initial.textContent = `Initial array = ${arr}`;
+        reversed.textContent = `Revered array = ${reverse}`;
+
+        output.appendChild(initial);
+        output.appendChild(reversed);
+      }
+
+
+      useUtility();
+    </script>
+  </body>
+</html>

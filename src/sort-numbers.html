@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Algorithms</title>
+  </head>
+  <body>
+    <h2>Sorting Algorithms</h2>
+    <p>
+      Task: Implement a sorting algorithm of your choice (e.g., Bubble Sort, Selection
+      Sort, Merge Sort) to sort an array of numbers in ascending order.
+    </p>
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function
+      // Sorting algorithms using:
+      /*    Bubble sort: Compare adjacent elements and swap them if they are in the wrong order. Repeat this process until the array is sorted.
+       */
+      // function bubbleSort(array) {
+      //   let pointer = array[0];
+      //   let swap = 0;
+
+      //   for (let i = 1; i < array.length; i++) {
+      //     // change sign from `<` to `>`
+      //     // to sort in descending order
+      //     if (pointer === array[i] || pointer < array[i]) {
+      //       pointer = array[i];
+      //     } else {
+      //       swap = array[i];
+      //       pointer = array[i - 1];
+      //       array[i] = pointer;
+      //       array[i - 1] = swap;
+      //       bubbleSort(array);
+      //     }
+      //   }
+      //   return array;
+      // }
+      function bubbleSort(array) {
+        let isSorted = false;
+
+        while (!isSorted) {
+          isSorted = true;
+
+          for (let i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+              const temp = array[i];
+              array[i] = array[i + 1];
+              array[i + 1] = temp;
+              isSorted = false;
+            }
+          }
+        }
+
+        return array;
+      }
+      // selection sort
+      /*
+    Selection Sort: Find the minimum element in the unsorted part of the array and swap it with the first unsorted element. Repeat this process until the array is sorted.
+    */
+      // function selectionSort(array = [], p = 0) {
+      //   let limit = array.length;
+      //   if (p === limit - 1) {
+      //     return array;
+      //   }
+
+      //   let pointer = array[p];
+      //   let swap = array[p];
+      //   let pos = p;
+
+      //   for (let i = p + 1; i < limit; i++) {
+      //     if (pointer === array[i] || array[i] < pointer) {
+      //       pointer = array[i];
+      //       pos = i;
+      //     }
+      //   }
+
+      //   // initiate the swap logic
+      //   array[p] = pointer;
+      //   array[pos] = swap;
+      //   p++;
+      //   selectionSort(array, p);
+      //   return array;
+      // }
+      function selectionSort(array) {
+        const length = array.length;
+
+        for (let i = 0; i < length - 1; i++) {
+          let minIndex = i;
+
+          for (let j = i + 1; j < length; j++) {
+            if (array[j] < array[minIndex]) {
+              minIndex = j;
+            }
+          }
+
+          if (minIndex !== i) {
+            const temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+          }
+        }
+
+        return array;
+      }
+      // insertion sort
+      /*
+Insertion Sort: Build the final sorted array one element at a time. Take an element from the unsorted part of the array and insert it into its correct position in the sorted part of the array.
+       */
+      // function insertionSort(array, insert = []) {
+      //   let limit = array.length;
+      //   if (limit === 0) {
+      //     return insert;
+      //   }
+
+      //   let pointer = array[0];
+      //   let pos = 0;
+      //   let popped = [];
+
+      //   for (let i = 1; i < limit; i++) {
+      //     if (pointer === array[i] || array[i] < pointer) {
+      //       pointer = array[i];
+      //       pos = i;
+      //     }
+      //   }
+
+      //   popped = array.splice(pos, 1);
+      //   insert.push(popped[0]);
+      //   insertionSort(array, insert);
+      //   return insert;
+      // }
+
+      function insertionSort(array) {
+        const length = array.length;
+
+        for (let i = 1; i < length; i++) {
+          let j = i;
+          const current = array[i];
+
+          while (j > 0 && array[j - 1] > current) {
+            array[j] = array[j - 1];
+            j--;
+          }
+
+          array[j] = current;
+        }
+
+        return array;
+      }
+      // merge sort
+      // quick sort
+      // heap sort
+
+      // example usage
+      function getRndInt(max, min = 0) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      function useUtility() {
+        // generate numbers and create an array
+        let rndArray = [];
+        for (let i = 0; i < 10; i++) {
+          let rnd = getRndInt(20, 0);
+          rndArray.push(rnd);
+        }
+
+        console.log(`Used ${rndArray}`);
+        let sortedArray = bubbleSort(rndArray);
+        // let sortedArray = selectionSort(rndArray, 0);
+        // let start = Date.now();
+        // let sortedArray = insertionSort(rndArray);
+        // console.log(`${Date.now() - start}ms taken`);
+        console.log(`Sorted: ${sortedArray}`);
+
+        // return rndArray;
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

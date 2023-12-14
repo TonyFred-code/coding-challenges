@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse a String</title>
+  </head>
+  <body>
+    <h2>Reverse a String</h2>
+    <p>
+      Task: Build a function that reverses a given string. For example, inputting "Hello"
+      should return "olleH".
+    </p>
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // first trial
+      // function reverseString(string) {
+      //   let newString = "";
+      //   for (let i = 1; i <= string.length; i++) {
+      //     newString += string[string.length - i];
+      //   }
+      //   output.textContent = `Original String = "${string}".
+      //       Reversed String = "${newString}"`;
+      // }
+
+      /* Updated version (ChatGPT) */
+      // utility function
+      function reverseString(string) {
+        let arr = string.split("");
+        console.log(arr);
+        let reversedString = string.split("").reverse().join("");
+        return reversedString;
+      }
+
+      // example usage
+      function useUtility() {
+        let string = "Hello"
+        let reversedString = reverseString(string);
+        output.textContent = `Original String = "${string}".  Reversed String = "${reversedString}"`;
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

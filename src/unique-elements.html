@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unique Elements</title>
+  </head>
+  <body>
+    <h2>Unique Elements</h2>
+    <p>
+      Task: Implement a function that takes an array as input and returns a new array
+      containing only the unique elements from the original array.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function
+      function getRndInt(max, min = 0) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      // function uniqueElement(array) {
+      //     const unique = [];
+
+      //     for (let element of array) {
+      //         if (unique.indexOf(element) === -1) {
+      //             unique.push(element);
+      //         }
+      //     }
+
+      //     return unique;
+      // }
+
+      // use utility
+
+      function uniqueElements(array) {
+        const uniqueSet = new Set(array);
+        const uniqueArray = Array.from(uniqueSet);
+        return uniqueArray;
+      }
+
+      function useUtility() {
+        let rndArray = [];
+
+        for (let i = 0; i < 15; i++) {
+          rndArray.push(getRndInt(5));
+        }
+
+        let unique = uniqueElements(rndArray);
+        console.log(rndArray);
+        console.log(unique);
+      }
+    </script>
+  </body>
+</html>

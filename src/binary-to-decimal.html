@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary to Decimal Converter</title>
+  </head>
+  <body>
+    <h2>Challenge: Binary to Decimal Converter</h2>
+    <p>Task: Write a function that converts a binary number to its decimal equivalent.</p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // improve on regExp to ensure the presence
+      // of only one "." decimal point.
+      /* utility function */
+      // Function to convert a binary number (as a string) to its decimal equivalent
+      function binaryToDecimal(binaryString) {
+        if (typeof binaryString !== "string" || binaryString.trim() === "") {
+          throw new Error("Invalid input.");
+        }
+        // Remove leading and trailing whitespace from the input binary string
+        const binary = binaryString.trim();
+
+        // Check if the input is a valid binary number (contains only 0s and 1s)
+        if (!/^[01\.?]+$/.test(binary)) {
+          throw new Error("Input must be a binary number.");
+        }
+
+        let decimalNumber = 0;
+        let [wholePart, decimalPart] = binary.split(".");
+
+        // Convert the whole part of the binary number to decimal
+        for (let i = 0; i < wholePart.length; i++) {
+          const digit = parseInt(wholePart[i]);
+          const power = wholePart.length - i - 1;
+          decimalNumber += digit * 2 ** power;
+        }
+
+        // If there is a decimal part, convert it to decimal as well
+        if (decimalPart) {
+          for (let i = 0; i < decimalPart.length; i++) {
+            const digit = parseInt(decimalPart[i]);
+            const power = -(i + 1);
+            decimalNumber += digit * 2 ** power;
+          }
+        }
+
+        return decimalNumber;
+      }
+    </script>
+  </body>
+</html>

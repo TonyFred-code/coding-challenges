@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of Multiples</title>
+  </head>
+  <body>
+    <h2>Sum of Multiples</h2>
+    <p>
+      Task: Write a function that takes two numbers as input, `num1` and `num2`, and
+      calculates the sum of all the multiples of `num1` and `num2` up to a given limit.
+    </p>
+
+    <p>
+      Note: Limit is optional, it will default to `12` if left empty. Others are required
+      (*).
+    </p>
+    <form class="input">
+      <label for="first">First Value (*):</label>
+      <input type="text" id="first" required />
+      <br />
+      <br />
+      <label for="second">Second Value (*):</label>
+      <input type="text" id="second" required />
+      <br />
+      <br />
+      <label for="limit">Limit:</label>
+      <input type="text" id="limit" />
+      <button type="submit">Generate</button>
+    </form>
+    <div class="output"></div>
+    <script>
+      const output = document.querySelector(".output");
+      const form = document.querySelector("form");
+      const secondVal = document.querySelector("#second");
+      const firstVal = document.querySelector("#first");
+      const limitVal = document.querySelector("#limit");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const num1 = Number(firstVal.value);
+        const num2 = Number(secondVal.value);
+        const limit = Number(limitVal.value);
+
+        if (num1 === NaN) {
+          firstVal.focus();
+          return console.error("Invalid input. Must be a number");
+        } else if (num2 === NaN) {
+          secondVal.focus();
+          return console.error("Invalid input. Must be a number");
+        } else if (limit === NaN) {
+          limitVal.focus();
+          return console.error("Invalid input. Must be a number");
+        }
+
+        firstVal.value = secondVal.value = limitVal.value = "";
+        if (limit === 0) {
+          useUtility(num1, num2);
+        } else {
+          useUtility(num1, num2, limit);
+        }
+      });
+      /*
+      // function sumMultiples(num1, num2, limit)
+      function sumMultiples(num1, num2) {
+        // remove comment on relevant code to allow user set custom limit
+        const limit = 15;
+        if (num1 <= 0) {
+          firstVal.focus();
+          return (output.textContent = "Value cannot be negative");
+        } else if (num2 <= 0) {
+          secondVal.focus();
+          return (output.textContent = "Value cannot be negative");
+        } else if (limit <= 0) {
+          limitVal.focus();
+          return (output.textContent = "Value cannot be negative");
+        }
+
+        const numberObj = {
+          multiple1: [],
+          multiple2: [],
+          sum1: 0,
+          sum2: 0,
+          sum: 0,
+        };
+        output.textContent = "";
+        for (let i = 1; i <= limit; i++) {
+          let m1 = num1 * i;
+          let m2 = num2 * i;
+          numberObj.multiple1.push(m1);
+          numberObj.multiple2.push(m2);
+          numberObj.sum1 += m1;
+          numberObj.sum2 += m2;
+        }
+
+        numberObj.sum = numberObj.sum1 + numberObj.sum2;
+
+        const list1 = document.createElement("ul");
+        const list2 = document.createElement("ul");
+        const sumVal = document.createElement("div");
+        const multiple1 = document.createElement("li");
+        const multiple2 = document.createElement("li");
+        const sum1 = document.createElement("li");
+        const sum2 = document.createElement("li");
+        const sum = document.createElement("li");
+
+        multiple1.textContent = `Array of multiples of ${num1} => ${numberObj.multiple1}`;
+        multiple2.textContent = `Array of multiples of ${num2} => ${numberObj.multiple2}`;
+        sum1.textContent = `Sum of multiples of ${num1} => ${numberObj.sum1}`;
+        sum2.textContent = `Sum of multiples of ${num2} => ${numberObj.sum2}`;
+        sum.textContent = `Sum of multiples of ${num1} & ${num2} => ${numberObj.sum}`;
+
+        list1.appendChild(multiple1);
+        list1.appendChild(sum1);
+        list2.appendChild(multiple2);
+        list2.appendChild(sum2);
+        output.appendChild(list1);
+        output.appendChild(list2);
+        output.appendChild(sum);
+      }
+
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", () => {
+        const num1 = Number(firstVal.value);
+        const num2 = Number(secondVal.value);
+        // const limit = Number(limitVal.value);
+        // sumMultiples(num1, num2, limit)
+        sumMultiples(num1, num2);
+        firstVal.value = secondVal.value = "";
+        // limitVal.value = ""
+
+      });
+*/
+      // updated using correction
+      // utility function
+      function sumMultiples(num1, num2, limit = 12) {
+        if (Number.isNaN(num1) ||
+         Number.isNaN(num2) ||
+          Number.isNaN(limit)) {
+          throw new TypeError("Values must be non-negative integers");
+        } else if (
+          typeof num1 !== "number" ||
+          typeof num2 !== "number" ||
+          typeof limit !== "number"
+        ) {
+          throw new TypeError("Values must be valid non-negative integer");
+        } else if (num1 <= 0 || num2 <= 0 || limit <= 0) {
+          throw new TypeError("Values must be positive")
+        }
+
+        const numberObj = {
+          multiple1: [],
+          multiple2: [],
+          sum1: 0,
+          sum2: 0,
+          sum: 0,
+        };
+
+        for (let i = 1; i <= limit; i++) {
+          const multiple1 = num1 * i;
+          const multiple2 = num2 * i;
+
+          numberObj.multiple1.push(multiple1);
+          numberObj.multiple2.push(multiple2);
+          numberObj.sum1 += multiple1;
+          numberObj.sum2 += multiple2;
+        }
+
+        numberObj.sum = numberObj.sum1 + numberObj.sum2;
+
+        return numberObj;
+      }
+
+      // example usage;
+      function useUtility(num1 = 2, num2 = 4, limit = 12) {
+        while (output.firstChild) {
+          output.removeChild(output.firstChild);
+        }
+
+        let numberObj = sumMultiples(num1, num2, limit);
+
+        const list = document.createElement("ul");
+        const item1 = document.createElement("li");
+        const item2 = document.createElement("li");
+        const item3 = document.createElement("li");
+
+        item1.textContent = `Multiples of ${num1} = ${numberObj.multiple1.join(
+          ", "
+        )}; Sum of multiples = ${numberObj.sum1}`;
+        item2.textContent = `Multiples of ${num2} = ${numberObj.multiple2.join(
+          ", "
+        )}; Sum of multiples = ${numberObj.sum2}`;
+        item3.textContent = `Sum of multiples of ${num1} & ${num2} = ${numberObj.sum}`;
+
+        list.appendChild(item1);
+        list.appendChild(item2);
+        list.appendChild(item3);
+        output.appendChild(list);
+      }
+    </script>
+  </body>
+</html>

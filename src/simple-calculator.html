@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+  </head>
+  <body>
+    <h2>Challenge: Simple Calculator</h2>
+
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Write a function that takes two numbers and an operator (+, -, *, /) as input and
+        performs the corresponding arithmetic operation
+      </p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given two numbers and a valid operator as input</p>
+      <p>
+        Implement a function to perform the arithmetic operation on the numbers and return
+        the result.
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: 5, 3, '+'<br />
+        Output: 8
+      </p>
+      <p>
+        Input: 10, 2, '/'<br />
+        Output: 5
+      </p>
+    </section>
+
+    <script>
+      function customError(name, message) {
+        const e = new Error();
+        e.name = name;
+        e.message = message;
+        return e;
+      }
+      function calculate(firstOperand, secondOperand, operator) {
+        // checks for firstOperand
+        if (Number.isNaN(firstOperand) || typeof firstOperand !== "number") {
+          const e = customError("Invalid operand", "firstOperand must be a valid number");
+          throw e;
+        }
+        // checks for secondOperand
+        if (Number.isNaN(secondOperand) || typeof secondOperand !== "number") {
+          const e = customError(
+            "Invalid operand",
+            "secondOperand must be a valid number"
+          );
+          throw e;
+        }
+
+        if (operator === "+") {
+          return firstOperand + secondOperand;
+        } else if (operator === "-") {
+          return firstOperand - secondOperand;
+        } else if (operator === "/") {
+          if (secondOperand === 0) {
+            const e = customError("MATH ERROR", "Division by zero not allowed.");
+            throw e;
+          }
+          return firstOperand / secondOperand;
+        } else if (operator === "*") {
+          return firstOperand * secondOperand;
+        } else {
+          // throw error for unknown and known (but not used) operators
+          const e = customError(
+            "Invalid Operator",
+            "Only '+', '*', '-', and '/' are recognized as valid operators."
+            );
+            throw e;
+        }
+      }
+    </script>
+  </body>
+</html>

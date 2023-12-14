@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factorial Calculator</title>
+  </head>
+  <body>
+    <h2>Factorial Calculator</h2>
+    <p>
+      Task: Write a function that calculates the factorial of a given number. The
+      factorial of a non-negative integer `n` is the product of all positive integers less
+      than or equal to `n`
+    </p>
+    <form class="input">
+      <label for="number"></label>
+      <input type="text" name="factorial" id="number" />
+      <button type="submit">Generate</button>
+    </form>
+    <div class="output"></div>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+      const output = document.querySelector(".output");
+      const btn = document.querySelector("button");
+      const input = document.querySelector("input");
+
+      // first trial
+      // function factorial(num) {
+      //   if (num >= 0) {
+      //     if (num === 0) {
+      //       output.textContent = "0! = 1";
+      //       return;
+      //     }
+      //     let start = num;
+      //     let string = num;
+      //     for (let i = num; i > 1; ) {
+      //       --i;
+      //       num *= i;
+      //       string += " x " + i;
+      //     }
+
+      //     output.textContent = `${string} = ${num}`;
+      //   } else {
+      //     input.focus();
+      //     output.textContent = "MATH ERROR: Only non-negative integers allowed";
+      //   }
+      // }
+
+      // example usage
+
+      /* Corrected and improved (ChatGPT) */
+      // utility function
+      function factorial(num) {
+        if (Number.isNaN(num) || typeof num !== "number") {
+          throw new Error("Invalid input. Must be a non-negative integer");
+        }
+        if (num >= 0) {
+          if (num === 0) {
+            return 1;
+          }
+
+          let factors = [num];
+          let result = num;
+
+          for (let i = num - 1; i > 0; i--) {
+            factors.push(i);
+            result *= i;
+          }
+
+          let string = factors.join(" x ");
+          return `${num}! = ${string} = ${result}`;
+        } else {
+          console.error("MATH ERROR: Only non-negative integers allowed");
+          return null;
+        }
+      }
+
+      btn.addEventListener("click", () => {
+        const number = Number(input.value);
+        if (isNaN(number)) {
+          output.textContent = "You need to enter a number";
+        } else {
+          input.value = "";
+          input.blur();
+          let result = factorial(number);
+
+          output.textContent = result;
+        }
+      });
+    </script>
+  </body>
+</html>

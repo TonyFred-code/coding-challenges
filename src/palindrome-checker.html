@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome Checker</title>
+  </head>
+  <body>
+    <h2>Palindrome Checker</h2>
+    <p>
+      Task: Write a function that takes a string as input and returns `true` if the string
+      is a palindrome (reads the same forwards and backwards), and `false` otherwise.
+      Ignore non-alphanumeric characters and case sensitivity.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+      /* first trial
+      function checkPalindrome(string) {
+        if (typeof(string) !== "string") {
+            return console.error("can only check on strings")
+        }
+        let newString = "";
+        for (let i = 1; i <= string.length; i++) {
+          newString += string[string.length - i];
+        }
+
+        if (string.toLowerCase() === newString.toLowerCase()) {
+          output.textContent = `"${string}" reads "${newString}" backwards and hence a palindrome`;
+        } else {
+          output.textContent = `"${string}" reads "${newString}" backwards and hence not a palindrome`;
+        }
+      }
+
+      */
+
+      //  updated from correction
+      function checkPalindrome(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          throw new Error("INVALID INPUT. Parameter must be a valid string.")
+        }
+
+        const alphanumericString = string.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+        const reversedString = alphanumericString.split("").reverse().join("");
+
+        return alphanumericString === reversedString;
+      }
+
+      // use utility
+      function useUtility() {
+        console.log(checkPalindrome("A man, a plan, a canal, Panama")); // true
+        console.log(checkPalindrome("Hello world")); // false
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title Case</title>
+    <style>
+      ul {
+        list-style-type: none;
+      }
+      textarea {
+        vertical-align: top;
+        height: 5em;
+        width: 300px;
+      }
+      form li + li {
+        margin-top: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Title Case</h2>
+    <p>
+      Task: Write a function that takes a sentence as input and converts it to title case,
+      where the first letter of each word is capitalized.
+    </p>
+
+    <form action="">
+      <ul>
+        <li>
+          <label for="sententce">Sentence:</label>
+          <textarea
+            name="sentence"
+            id="sentence"
+            cols="30"
+            rows="10"
+            placeholder="Input sentence"></textarea>
+        </li>
+        <li>
+          <button type="submit">Title case</button>
+        </li>
+      </ul>
+    </form>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+      const form = document.querySelector("form");
+      const sentence = document.querySelector("textarea");
+
+      /* utility function*/
+
+      function titleCase(sentence) {
+        if (typeof sentence !== "string" || sentence.trim() === "") {
+          throw new Error("Invalid input type: input must be a sentence");
+        }
+
+        let words = sentence.trim().split(/\s+/);
+
+        for (let i = 0; i < words.length; i++) {
+          words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        }
+
+        let titleCasedSentence = words.join(" ");
+        return titleCasedSentence;
+      }
+
+      /*  example usage*/
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        useUtility();
+      });
+      function useUtility() {
+        let normal = sentence.value;
+        sentence.value = "";
+        let changed = titleCase(normal);
+        output.textContent = changed;
+      }
+    </script>
+  </body>
+</html>

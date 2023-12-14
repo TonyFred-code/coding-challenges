@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pig Latin</title>
+  </head>
+  <body>
+    <h2>Challenge: Pig Latin</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>Write a function that translates a given word into Pig Latin</p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given a word (string) as input</p>
+      <p>
+        Implement a function to translate the word into Pig Latin following the rules
+        provided in the challenge description
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: "hello"<br />
+        Output: "ellohay"
+      </p>
+      <p>
+        Input: "apple"<br />
+        Output: "appleway"
+      </p>
+    </section>
+    <section>
+      <h3>Rules</h3>
+      <p>The rules for converting a word into Pig Latin are as follows:</p>
+      <ul>
+        <li>
+          For words that begin with consonants or consonant clusters:
+          <ol>
+            <li>
+              Move the initial consonant or clusters of consonants to the end of the word
+            </li>
+            <li>Add "ay" to the end of the word.</li>
+          </ol>
+          <p>Example: "happy" → "appyhay", "glove" → "oveglay", "smile" → "ilesmay"</p>
+        </li>
+
+        <li>
+          For words that begin with vowels:
+          <ol>
+            <li>Simply add "way" to the end of the word.</li>
+          </ol>
+          <p>Example: "egg" → "eggway", "apple" → "appleway", "island" → "islandway"</p>
+        </li>
+      </ul>
+      <p>
+        Note: In some variations, "y" is treated as a consonant if it appears at the
+        beginning of a word, and as a vowel otherwise.
+      </p>
+    </section>
+
+    <script>
+      function isConsonant(char) {
+        const consonants = "bcdfghjklmnpqrstvwxyz";
+        return consonants.includes(char.toLowerCase());
+      }
+
+      function pigLatin(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          throw new TypeError("Invalid input. Must be a non-empty string.");
+        }
+
+        let firstChar = string[0].toLowerCase();
+        if (isConsonant(firstChar)) {
+          let clusters = 1;
+          for (let i = 1; i < string.length; i++) {
+            if (isConsonant(string[i]) && string[i] !== "y") {
+              clusters++;
+            } else {
+              break;
+            }
+          }
+          return string.slice(clusters) + string.slice(0, clusters) + "ay";
+        } else {
+          return string + "way";
+        }
+      }
+    </script>
+  </body>
+</html>

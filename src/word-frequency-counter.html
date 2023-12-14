@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Frequency Counter</title>
+  </head>
+  <body>
+    <h2>Challenge 7: Word Frequency Counter</h2>
+    <p>
+      Summary: Develop a function that counts the frequency of each word in a given
+      sentence or paragraph.
+    </p>
+    <form action="">
+      <label for="sentence">Sentence:</label>
+      <textarea
+        name="sentence"
+        id="sentence"
+        cols="30"
+        rows="10"
+        placeholder="Type in sentence..."></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="input"></div>
+    <div class="output"></div>
+
+    <script>
+      const myForm = document.querySelector("form");
+      const output = document.querySelector(".output");
+      const input = document.querySelector(".input");
+      const sentence = document.querySelector("#sentence");
+
+      myForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        useUtility();
+      });
+
+      /* Utility Function */
+      function wordCount(sentence) {
+        if (typeof sentence !== "string" || sentence.trim() === "") {
+          throw new Error("Invalid input: Please provide a non-empty sentence.");
+        }
+
+        const wordsArray = sentence
+          .trim()
+          .replace(/[^\s+\w-*]/g, "")
+          .split(" ");
+        const occurrenceMap = new Map();
+
+        for (const word of wordsArray) {
+          occurrenceMap.set(word, (occurrenceMap.get(word) || 0) + 1);
+        }
+
+        const sortedWords = Array.from(occurrenceMap.entries()).sort(
+          (a, b) => b[1] - a[1]
+        );
+
+        return sortedWords;
+      }
+
+      /* Example Usage */
+      function useUtility() {
+        let value = sentence.value;
+        sentence.value = "";
+        input.textContent = value;
+        let changed = wordCount(value);
+        output.textContent = "";
+        for (let [word, count] of changed) {
+          output.textContent += `${word} => ${count}.`;
+        }
+      }
+    </script>
+  </body>
+</html>

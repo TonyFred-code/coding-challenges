@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome Pairs</title>
+  </head>
+  <body>
+    <h2>Challenge: Palindrome Pairs</h2>
+
+    <script>
+      function customError(name, message) {
+        const e = new Error();
+        e.name = name;
+        e.message = message;
+        return e;
+      }
+
+      function checkPalindrome(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          const e = customError("INVALID INPUT", "parameter must be a valid non-empty string");
+          throw e;
+        }
+
+        const alphanumericString = string.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+        const reversedString = alphanumericString.split("").reverse().join("");
+
+        return alphanumericString === reversedString;
+      }
+      function palindromePairs(array) {
+        if (!Array.isArray(array) || array.length === 0) {
+          const e = customError("INVALID INPUT", "parameter must be a non-empty array of words");
+          throw e;
+        }
+
+        const pairs = [];
+        for (let i = 0, len = array.length; i < len; i++) {
+          for (let j = 0; j < len; j++) {
+            let test = `${array[i]}${array[j]}`;
+            if (checkPalindrome(test)) {
+              pairs.push([i, j]);
+            }
+          }
+        }
+
+        return pairs;
+      }
+    </script>
+  </body>
+</html>

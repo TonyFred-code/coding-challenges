@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check the login</title>
+  </head>
+  <body>
+    <h2>Check login using prompt</h2>
+
+    <script>
+      function checkVisitor() {
+        let visitor = prompt("Who is here today?");
+
+        if (!visitor) {
+          console.log("Canceled");
+        } else if (visitor === "Admin") {
+          let password = prompt("Input your password sir");
+
+          if (!password) {
+            console.log("Canceled")
+          } else if (password === "TheMaster") {
+            console.log("Welcome!");
+          } else {
+            console.log("Wrong password.")
+          }
+        } else {
+          console.log("I don't know you.");
+        }
+      }
+
+      function capitalize(string) {
+        let lowerCaseString = string.toLowerCase();
+        let capitalizedString = lowerCaseString[0].toUpperCase() + lowerCaseString.slice(1);
+        return capitalizedString;
+      }
+
+      function getLastLetter(string) {
+        let lastChar = string[string.length - 1];
+        return lastChar;
+      }
+    </script>
+  </body>
+</html>

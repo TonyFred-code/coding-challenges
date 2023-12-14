@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <h2>Challenge: Shopping Cart</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>
+        This challenge requires you to create a shopping cart class that allows users to
+        perform various operations like adding items, removing items, calculating the
+        total price, and applying discounts.
+      </p>
+      <p>
+        Start by defining the class and its properties, such as an array to store the
+        items in the cart and a variable to keep track of the total price.
+      </p>
+      <p>
+        Implement methods for adding items to the cart, removing items, and updating the
+        total price accordingly.
+      </p>
+      <p>
+        Consider how you will handle discounts, whether they are percentage-based or fixed
+        discounts, and how they will be applied to the cart items.
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>Test Case 1: Add items to the cart and check the total price.</p>
+      <p>Test Case 2: Remove items from the cart and check the total price.</p>
+      <p>
+        Test Case 3: Apply a percentage-based discount and verify the new total price.
+      </p>
+      <p>Test Case 4: Apply a fixed discount and verify the new total price.</p>
+    </section>
+
+    <script>
+      class ShoppingCart {
+        constructor(id, discountValue = 0, discountType = "percentage") {
+          if (typeof discountValue !== "number") {
+            throw new TypeError("Invalid discount value")
+          }
+          if (typeof discountType !== "string") {
+            throw new TypeError("invalid discount type")
+          }
+          if (discountType !== "percentage" && discountType !==
+          "fixed") {
+            throw new Error("Invalid discountType. Must be either 'fixed' or 'percentage'")
+          }
+          this.id = id;
+          this.items = {};
+          this.totalPrice = 0;
+          this.discountType = discountType;
+          this.discountValue = discountValue;
+        }
+
+        fixedToPercentage(fixedAmount, totalPrice) {
+          let percent = Number(((fixedAmount / totalPrice) * 100).toFixed(2));
+          return percent;
+        }
+
+        addItem(
+          itemName,
+          unitPrice,
+          quantity = 1,
+          discountValue = 0,
+          discountType = "percentage"
+        ) {
+          if (quantity <= 0) {
+            throw new Error(
+              `Invalid input. quantity must be a positive non-zero integer`
+            );
+          }
+          if (discountType === "percentage" && (discountValue < 0 || discountValue > 1)) {
+            throw new RangeError(
+              "discountValue must be between 0 and 1 (both inclusive)"
+            );
+          }
+          if (!this.items[itemName]) {
+            // if item is not in cart;
+            this.items[itemName] = {};
+            this.items[itemName].itemName = itemName;
+            this.items[itemName].unitPrice = Number(unitPrice.toFixed(2));
+            this.items[itemName].quantity = quantity;
+            this.items[itemName].discountProperty = [discountType, discountValue];
+            let price = unitPrice * quantity;
+            let offPrice;
+            if (discountType === "percentage") {
+              offPrice = discountValue * price;
+            } else if (discountType === "fixed") {
+              let percent = fixedToPercentage(discountValue, price);
+              offPrice = percent * price;
+            }
+            this.items[itemName].price = Number((price - offPrice).toFixed(2));
+            this.totalPrice += Number((price - offPrice).toFixed(2));
+          } else {
+            // if item is already in the cart;
+            // check if same unit price specified in item
+            // is same as item already in cart;
+            if (this.items[itemName].unitPrice !== unitPrice) {
+              throw new Error(
+                "Item found in cart but unitPrice specified is different from original unitPrice."
+              );
+            }
+            this.items[itemName].quantity += quantity;
+            let addOn = unitPrice * quantity;
+            let offPrice;
+            if (discountType === "percentage") {
+              offPrice = discountValue * price;
+            } else if (discountType === "fixed") {
+              let percent = fixedToPercentage(discountValue, price);
+              offPrice = percent * price;
+            }
+            this.items[itemName].price += addOn - offPrice;
+            this.totalPrice += price - offPrice;
+          }
+        }
+
+        removeItem(itemName, quantity = 1) {
+          if (!itemName) {
+            throw new Error("Invalid input. Cannot access item");
+          }
+          if (!this.items[itemName]) {
+            throw new Error(`Invalid Input. "${itemName}" not in this cart`);
+          }
+          if (quantity <= 0) {
+            throw new Error("Quantity to be removed must be positive non-zero integer.");
+          }
+          if (quantity > this.items[itemName].quantity) {
+            throw new RangeError("Unable to remove beyond quantity present in cart");
+          }
+
+          let price = this.items[itemName].unitPrice * quantity;
+          this.totalPrice -= price;
+          if (quantity === this.items[itemName].quantity) {
+            delete this.items[itemName];
+          } else {
+            this.items[itemName].quantity -= quantity;
+            this.items[itemName].price -= price;
+          }
+        }
+
+        showTotalPrice() {
+          let price;
+          if (this.discountType === "percentage") {
+            price = this.discountValue * this.totalPrice;
+          } else if (this.discountType === "fixed") {
+            let percent = fixedToPercentage(fixed, this.totalPrice);
+            price = percent * this.totalPrice;
+          }
+          return Number((this.totalPrice - price).toFixed(2));
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Maximum Value</title>
+  </head>
+  <body>
+    <h2>Find Maximum Value</h2>
+    <p>
+      Task:Create a function that finds and returns the maximum value in an array of
+      numbers.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility functions
+      function findMax(array) {
+        let max = array[0];
+
+            for (let x = 1; x < array.length; x++) {
+                if (array[x] > max) {
+                  max = array[x]
+                }
+            }
+        return max;
+      }
+
+      function getRndInt(max = 10, min = 0) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      // example usage
+      function useUtility(arrLength = 10, maxVal = 10, minVal = 0) {
+        let rndArray = [];
+
+        for (let i = 0; i < arrLength; i++) {
+          rndArray.push(getRndInt(maxVal, minVal));
+        }
+
+        let max = findMax(rndArray);
+        output.textContent = `In array ${rndArray.join(", ")}; max value = ${max}`;
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

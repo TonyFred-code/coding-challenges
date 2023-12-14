@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unique Characters</title>
+  </head>
+  <body>
+    <h2>Challenge: Unique Characters in a string.</h2>
+
+    <script>
+      function uniqueString(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          throw new Error("Invalid input. Parameter must be a non-empty string");
+        }
+
+        const charMap = {};
+        let len = string.length;
+        for (let i = 0; i < len; i++) {
+          if (charMap[string[i]]) {
+            return false;
+          } else {
+            charMap[string[i]] = "present";
+          }
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>

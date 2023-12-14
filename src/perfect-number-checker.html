@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfect Number Checker</title>
+  </head>
+  <body>
+    <h2>Challenge: Perfect Number Checker</h2>
+    <p>
+      Summary: Write a function that checks whether a given number is a perfect number. A
+      perfect number is a positive integer that is equal to the sum of its proper divisors
+      (excluding the number itself).
+    </p>
+
+    <p>
+      Write a function called isPerfectNumber that takes an integer number as input and
+      returns true if the number is a perfect number, and false otherwise.
+    </p>
+
+    <script>
+        // utility function
+        function isPerfectNumber(number) {
+            if (number <= 0) {
+               console.error("Invalid input")
+               return false;
+            }
+
+            const divisors = [];
+            let sum = 0;
+
+            for (let i = 1; i < number; i++) {
+                if (number % i === 0) {
+                    divisors.push(i);
+                }
+            }
+
+            for (let i = 0; i < divisors.length; i++) {
+                sum += divisors[i];
+            }
+
+            if (sum === number) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    </script>
+  </body>
+</html>

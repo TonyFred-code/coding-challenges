@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anagram Checker</title>
+  </head>
+  <body>
+    <h2>Anagram Checker</h2>
+    <p>
+      Task: Build a function that takes two strings as input and determines whether they
+      are anagrams (contain the same characters in a different order).
+    </p>
+
+    <form>
+      <label for="first">First:</label>
+      <input type="text" id="first" />
+      <br /><br />
+      <label for="second">Second:</label>
+      <input type="text" id="second" />
+
+      <br /><br />
+      <button type="submit" class="submit">Check</button>
+    </form>
+
+    <div class="output"></div>
+
+    <script>
+      const submitBtn = document.querySelector(".submit");
+      const first = document.querySelector("#first");
+      const second = document.querySelector("#second");
+      const form = document.querySelector("form");
+      const output = document.querySelector(".output");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+
+      // utility function
+      function cleanString(str) {
+        return str.toLowerCase().replace(/[^a-z]/g, "");
+      }
+
+      function anagramChecker(input1, input2) {
+        // may add checks for empty strings.
+        if (typeof input1 !== "string" ||
+         typeof input2 !== "string"  ||
+          input1.trim() === "" ||
+          input2.trim() === "") {
+          throw new Error("Invalid input. Both inputs must be strings.");
+        }
+        const cleanInput1 = cleanString(input1);
+        const cleanInput2 = cleanString(input2);
+
+        if (cleanInput1.length !== cleanInput2.length) {
+          return false;
+        }
+
+        if (cleanInput1 === cleanInput2) {
+          return false;
+        }
+
+
+        const valuation = {};
+
+        for (let i = 0; i < cleanInput1.length; i++) {
+          const char1 = cleanInput1[i];
+          const char2 = cleanInput2[i];
+
+          valuation[char1] = (valuation[char1] || 0) + 1;
+          valuation[char2] = (valuation[char2] || 0) - 1;
+        }
+
+        for (let count of Object.values(valuation)) {
+          if (count !== 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      submitBtn.addEventListener("click", () => {
+        const value1 = first.value;
+        const value2 = second.value;
+
+        console.log(anagramChecker(value1, value2));
+      });
+    </script>
+  </body>
+</html>

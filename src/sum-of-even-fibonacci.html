@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of Even Fibonacci Numbers</title>
+  </head>
+  <body>
+    <h2>Sum of Even Fibonacci Numbers</h2>
+
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Write a function that calculates the sum of all even Fibonacci numbers up to a
+        given limit
+      </p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given a positive integer as input</p>
+      <p>
+        Implement a function to calculate and return the sum of all even Fibonacci numbers
+        up to the given limit
+      </p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: 10<br />
+        Output: 10 (2 + 8)
+      </p>
+      <p>
+        Input: 100<br />
+        Output: 44 (2 + 8 + 34)
+      </p>
+    </section>
+
+    <script>
+      function sumEvenFibonacci(integer) {
+        if (Number.isNaN(integer) || typeof integer !== "number" || integer <= 0) {
+          throw new Error("Input must be a valid non-zero positive integer.");
+        }
+
+        const fibonacci = [0, 1]; // Initialize an array to store Fibonacci numbers
+        let sum = 0; // Initialize the sum of even Fibonacci numbers
+        const terms = []; // array to store the terms that are even
+
+        for (let i = 2; ; i++) {
+          let prevTerm = fibonacci[i - 1]; // Get the previous Fibonacci number
+          let firstTerm = fibonacci[i - 2]; // Get the first Fibonacci number before the previous one
+          let term = prevTerm + firstTerm; // Calculate the next Fibonacci number
+
+          if (term >= integer) {
+            break; // If the next Fibonacci number exceeds the limit, terminate the loop
+          }
+
+          if (term % 2 === 0) {
+            // If the Fibonacci number is even,
+            sum += term;  // add it to the sum
+            terms.push(term); // and add it to terms array
+          }
+
+          fibonacci.push(term); // Store the Fibonacci number in the array for future calculations
+        }
+
+        return [sum, terms]; // Return the sum of even Fibonacci numbers and the terms added to get the sum
+      }
+    </script>
+  </body>
+</html>

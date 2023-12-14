@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List Manager</title>
+  </head>
+  <body>
+    <h2>To-Do List Manager</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Implement a to-do list manager that allows users to add tasks, mark tasks as
+        completed, and view their to-do list
+      </p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>
+        The manager should have functions to add a task, mark a task as completed, and get
+        the list of tasks.
+      </p>
+      <p>Each task should have a name and a status (completed or not completed).</p>
+      <p>The manager should store tasks in an array or list.</p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>Add task: "Buy groceries"</p>
+      <p>Add Task: "Finish homework"</p>
+      <p>Get List: ["Buy groceries", "Finish homework"]</p>
+      <p>Mark as completed: "Buy groceries"</p>
+      <p>Get List: ["Buy groceries (Completed)", "Finish homework"]</p>
+    </section>
+
+    <script>
+      class ToDoListManager {
+        constructor(taskName = "manager") {
+          this.taskName = taskName;
+          this.taskId = Date.now();
+          this.tasks = {};
+        }
+
+        addTask(taskName) {
+          if (!taskName || typeof taskName !== "string" || taskName.trim() === "") {
+            const e = new Error();
+            e.name = "Invalid TaskName";
+            e.message = "taskName parameter must be a non-empty string";
+            throw e;
+          }
+
+          const task = new Task(taskName);
+          const taskId = task.taskIdValue;
+          this.tasks[taskId] = task;
+        }
+
+        #formatTask(obj) {
+            let taskList = [];
+            for (let prop in obj) {
+             const taskName = this.tasks[prop].taskName;
+             if (this.tasks[prop].completed) {
+                taskList.push(`${taskName} (completed)`)
+             } else {
+                taskList.push(`${taskName}`)
+             }
+            }
+
+            return taskList;
+        }
+
+        get taskList() {
+            const taskList = this.#formatTask(this.tasks)
+            return taskList;
+        }
+
+        unformattedTaskList() {
+            return this.tasks;
+        }
+
+        markAsCompleted(taskId) {
+
+        }
+      }
+
+
+      class Task {
+        constructor(taskName) {
+            this.taskId = Date.now();
+            this.taskName = taskName;
+            this.completed = false;
+        }
+
+        get taskIdValue() {
+            return this.taskId;
+        }
+      }
+    </script>
+  </body>
+</html>

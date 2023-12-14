@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Vowels</title>
+  </head>
+  <body>
+    <h2>Count Vowels</h2>
+    <p>
+      Task: Develop a function that counts the number of vowels (a, e, i, o, u) in a given
+      string.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+      /* first trial
+        function countVowels(string) {
+            const vowels = ["a", "e", "i", "o", "u", 'A', 'E', 'I', 'O', 'U'];
+            let vowelCount = 0;
+
+            for (let i = 0; i < string.length; i++) {
+                for (const vowel of vowels) {
+                    if (string[i] === vowel) {
+                    vowelCount++;
+                    }
+                }
+            }
+
+            console.log(string, vowelCount);
+            output.textContent = `${string} has ${vowelCount} vowel`
+        }
+*/
+
+      // Updated with correction
+      // utility function
+      function countVowels(string) {
+        const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+        let vowelCount = 0;
+
+        for (let i = 0; i < string.length; i++) {
+          if (vowels.includes(string[i])) {
+            vowelCount++;
+          }
+        }
+
+        return vowelCount;
+      }
+
+      // example usage
+      function useUtility(string = "Hello") {
+        let result = countVowels(string);
+        output.textContent = `${string} has ${result} ${
+          result > 1 ? "vowels." : "vowel."
+        }`;
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solve Math Question</title>
+  </head>
+  <body>
+    <h3>A math question</h3>
+    <p>
+      Question: A company plans to give an end of year bonus to it's employees. The bonus
+      is calculated at the rate of 6% of the employees monthly salary. An additional
+      $2000.00 is given to the employees earning more than $50,000.00 per month. Build a
+      sample function to solve.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function(s)
+      function getRndInt(max, min) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      function calcBonus(salary) {
+        let bonus = 0;
+        bonus = 0.06 * salary;
+
+        if (salary > 50_000.0) {
+          return bonus + 2000.0;
+        } else {
+          return bonus;
+        }
+      }
+
+
+      // example usage
+      function useUtility() {
+        let salary = (getRndInt(20, 100) * 1000).toFixed(2);
+        let bonus = calcBonus(salary);
+
+
+
+        console.log(salary, bonus);
+      }
+
+      useUtility();
+    </script>
+  </body>
+</html>

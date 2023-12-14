@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distance Travel Calculator</title>
+  </head>
+  <body>
+    <h2>Challenge 1: Distance Travel Calculator</h2>
+    <p>
+      Summary: You are going on a road trip and want to calculate how many days it will
+      take to reach your destination based on your daily travel distance.
+    </p>
+    <p>Write a function called calculateTravelDays that takes three parameters:</p>
+    <ol>
+      <li>
+        totalDistance (number) - The total distance you need to travel (in kilometers).
+      </li>
+      <li>
+        dailyDistance (number) - The distance you can cover in a day (in kilometers).
+      </li>
+      <li>
+        restDays (number) - The number of rest days you plan to take during the trip.
+      </li>
+    </ol>
+
+    <p>
+      The function should calculate and return the number of days it will take for you to
+      reach your destination, considering your travel distance per day and the rest days
+      you plan to take.
+    </p>
+
+    <script>
+      // utility function
+      function calculateTravelDays(totalDistance, dailyDistance, restDays) {
+        if (
+          typeof totalDistance !== "number" ||
+          typeof dailyDistance !== "number" ||
+          typeof restDays !== "number"
+        ) {
+          throw new Error("Invalid input.");
+        }
+
+        let travelDays = 0;
+        travelDays = Math.floor((totalDistance / dailyDistance) + restDays);
+
+        return travelDays;
+      }
+    </script>
+  </body>
+</html>

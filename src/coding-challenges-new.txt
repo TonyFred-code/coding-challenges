@@ -1,0 +1,364 @@
+﻿Sure, let's break down each coding challenge into further summary, requirements, and test cases:
+
+1. Word Frequency Counter: previously done.
+
+Summary:
+Write a function that takes a string as input and returns the frequency of each word in the string, ignoring case and considering word boundaries.
+
+Requirements:
+- The function should take a single string as input.
+- It should split the string into words (ignoring punctuation) and convert them to lowercase.
+- Count the frequency of each unique word in the string and return a dictionary (object) containing the word frequencies.
+
+Test Cases:
+Input: "The quick brown fox jumps over the lazy dog. The dog barks at the fox."
+Output: { the: 2, quick: 1, brown: 1, fox: 2, jumps: 1, over: 1, lazy: 1, dog: 2, barks: 1, at: 1 }
+
+Input: "This is a test. This is only a test."
+Output: { this: 2, is: 2, a: 2, test: 2, only: 1 }
+
+2. Email Validator:
+
+Summary:
+Write a function that takes an email address as input and determines if it is a valid email address based on format rules.
+
+Requirements:
+- The function should take a single string (email address) as input.
+- Check if the email address contains exactly one '@' character and has a valid domain name (e.g., "example.com").
+- Return true if the email address is valid; otherwise, return false.
+
+Test Cases:
+Input: "john.doe@example.com"
+Output: true
+
+Input: "invalid.email@"
+Output: false
+
+Input: "missing-at-symbol.com"
+Output: false
+
+3. To-Do List Manager:
+
+Summary:
+Implement a to-do list manager that allows users to add tasks, mark tasks as completed, and view their to-do list.
+
+Requirements:
+- The manager should have functions to add a task, mark a task as completed, and get the list of tasks.
+- Each task should have a name and a status (completed or not completed).
+- The manager should store tasks in an array or list.
+
+Test Cases:
+Add Task: "Buy groceries"
+Add Task: "Finish homework"
+Get List: ["Buy groceries", "Finish homework"]
+Mark as Completed: "Buy groceries"
+Get List: ["Buy groceries (Completed)", "Finish homework"]
+
+4. Currency Converter:
+
+Summary:
+Create a function that converts an amount from one currency to another using a fixed exchange rate.
+
+Requirements:
+- The function should take the amount to be converted, the source currency, and the target currency as input.
+- Use a fixed exchange rate to convert the amount from the source currency to the target currency.
+- Return the converted amount.
+
+Test Cases:
+Input: 100, "USD", "EUR"
+Output: 88.00
+
+Input: 50, "EUR", "GBP"
+Output: 44.50
+
+5. Password Strength Checker: previously done;
+
+Summary:
+Write a function that checks the strength of a password based on various criteria, such as length, use of uppercase/lowercase letters, numbers, and special characters.
+
+Requirements:
+- The function should take a password string as input.
+- Check if the password meets the following criteria:
+  - At least 8 characters long
+  - Contains at least one uppercase letter
+  - Contains at least one lowercase letter
+  - Contains at least one number
+  - Contains at least one special character (e.g., !@#$%^&*)
+- Return true if the password meets all criteria; otherwise, return false.
+
+Test Cases:
+Input: "Strong@123"
+Output: true
+
+Input: "weakpassword"
+Output: false
+
+6. File Organizer:
+
+Summary:
+Implement a script that organizes files in a directory by moving them into subdirectories based on their file types (e.g., images, documents, music, etc.).
+
+Requirements:
+- The script should organize files in a specified directory.
+- Create subdirectories for different file types (e.g., "Images", "Documents", "Music", etc.).
+- Move each file to the corresponding subdirectory based on its file type.
+
+Test Cases:
+Suppose the directory contains the following files:
+- image.jpg
+- document.docx
+- music.mp3
+
+After running the script, the directory should look like this:
+- /Images/image.jpg
+- /Documents/document.docx
+- /Music/music.mp3
+
+7. Weather App:
+
+Summary:
+Create a simple weather application that allows users to enter a location and view the current weather conditions.
+
+Requirements:
+- The app should prompt the user to enter a location (city, state, or country).
+- Use a weather API to fetch the current weather conditions for the entered location.
+- Display the weather information to the user, including temperature, humidity, and weather description.
+
+Test Cases:
+Input: "New York"
+Output: "Current weather in New York: 75°F, Humidity: 60%, Sunny"
+
+Input:
+
+ "London"
+Output: "Current weather in London: 18°C, Humidity: 70%, Cloudy"
+
+8. Tip Calculator:
+
+Summary:
+Write a function that calculates the total bill amount, including the tip, based on the bill amount and tip percentage.
+
+Requirements:
+- The function should take the bill amount and tip percentage as input.
+- Calculate the tip amount based on the tip percentage.
+- Add the tip amount to the bill amount to get the total bill.
+- Return the total bill amount.
+
+Test Cases:
+Input: 50, 15
+Output: 57.50
+
+Input: 100, 20
+Output: 120.00
+
+9. Shopping Cart: in progress;
+
+Summary:
+Implement a basic shopping cart system that allows users to add items, view the cart, and calculate the total cost.
+
+Requirements:
+- The shopping cart should support adding items with a name and price.
+- Implement a function to view the items in the cart along with their prices.
+- Calculate and return the total cost of all items in the cart.
+
+Test Cases:
+Add Item: "Shirt", $20
+Add Item: "Shoes", $50
+View Cart: "Shirt ($20), Shoes ($50)"
+Total Cost: $70
+
+10. Text Analysis Tool:
+
+Summary:
+Create a tool that analyzes a text and provides statistics such as word count, sentence count, average word length, and most frequent words.
+
+Requirements:
+- The tool should take a text string as input.
+- Calculate the word count, sentence count, and average word length in the text.
+- Find and return the most frequent words in the text along with their frequencies.
+
+Test Cases:
+Input: "This is a simple text. It has multiple sentences. Simple text has simple words."
+Word Count: 15
+Sentence Count: 3
+Average Word Length: 4.67
+Most Frequent Words: "simple" (2 occurrences), "text" (2 occurrences)
+
+Great questions! When implementing the word frequency counter, the treatment of joined words and digits depends on the specific requirements of your application or use case. Here are some considerations:
+
+1. Joined Words:
+- If your application treats hyphenated words like "father-in-law" as separate words, you should count them as individual words in the word frequency counter. This means "father-in-law" would be considered three separate words: "father," "in," and "law."
+- On the other hand, if your application treats hyphenated words as a single word, then "father-in-law" would be considered one word in the word frequency counter.
+
+2. Digits:
+- Whether digits should be registered as words in the word frequency counter also depends on the context of your application.
+- If you want to include digits in the word count (e.g., "2 people"), then you should treat them as separate words and count them accordingly.
+- If you want to exclude digits from the word count, you can implement a logic to skip counting words that consist only of digits.
+
+In summary, the treatment of hyphenated words and digits in the word frequency counter depends on your specific requirements and how you want to analyze and process the text. You can adjust the implementation based on whether you want to consider them as separate words or not.
+
+Using USD as the base currency for your currency converter implementation is a reasonable approach. Converting from one currency to USD and then to the target currency can simplify the process and help ensure consistency.
+
+Here's a high-level overview of the steps you can follow for currency conversion using USD as the base currency:
+
+1. Define the exchange rates: Create a data structure that holds the exchange rates of various currencies against the USD.
+
+2. Convert from the source currency to USD: To convert an amount from the source currency to USD, you'll use the exchange rate for the source currency against USD. Multiply the amount by the exchange rate to get the equivalent amount in USD.
+
+3. Convert from USD to the target currency: To convert the USD amount to the target currency, use the exchange rate for the target currency against USD. Multiply the USD amount by the exchange rate to get the equivalent amount in the target currency.
+
+4. Implement error handling: Consider edge cases and error handling, such as handling invalid currency codes or unavailable exchange rates.
+
+5. Test extensively: Test your currency converter with various scenarios and currencies to ensure accurate and consistent results.
+
+Keep in mind that real-world currency conversion involves more complexities, such as fees, bid-ask spreads, and dynamic exchange rates. However, for your learning and practice purposes, using USD as the base currency is a good starting point.
+
+Feel free to proceed with your implementation, and if you have any questions or need further assistance, don't hesitate to ask! Happy coding!
+
+Sure! Here's the list of common file types and their corresponding file extensions as a JavaScript object:
+
+```javascript
+const fileTypes = {
+  JavaScript: ".js",
+  CascadingStyleSheets: ".css",
+  HyperTextMarkupLanguage: ".html",
+  Python: ".py",
+  Java: ".java",
+  "C++": ".cpp",
+  "C#": ".cs",
+  Ruby: ".rb",
+  PHP: ".php",
+  JSON: ".json",
+  XML: ".xml",
+  PlainText: ".txt",
+  Markdown: ".md",
+  PortableDocumentFormat: ".pdf",
+  MicrosoftWordDocument: ".docx",
+  MicrosoftExcelSpreadsheet: ".xlsx",
+  Images: {
+    JPEG: ".jpg",
+    PNG: ".png",
+    GIF: ".gif",
+    BMP: ".bmp",
+  },
+  Audio: {
+    MP3: ".mp3",
+    WAV: ".wav",
+    OGG: ".ogg",
+  },
+  Video: {
+    MP4: ".mp4",
+    AVI: ".avi",
+    MKV: ".mkv",
+  },
+  CompressedFiles: {
+    ZIP: ".zip",
+    RAR: ".rar",
+    "7Z": ".7z",
+  },
+};
+```
+
+This JavaScript object `fileTypes` contains nested objects for categories like Images, Audio, Video, and Compressed Files. Each category contains key-value pairs with the file type as the key and its corresponding file extension as the value.
+
+You can now efficiently work with this object to retrieve file extensions for different file types. For example, to get the file extension for JavaScript files, you can use `fileTypes.JavaScript`, which will return `".js"`. Similarly, you can access other file extensions using their respective keys in the object.
+
+Certainly! Here's an extended version of the dummy weather data with information for 30 major cities across the globe:
+
+```json
+const dummyWeatherData = [
+  {
+    "location": "New York",
+    "description": "Partly Cloudy",
+    "temperature": 25,
+    "humidity": 65,
+    "windSpeed": 8,
+    "weatherIcon": "https://dummyurl.com/partly_cloudy.png"
+  },
+  {
+    "location": "Los Angeles",
+    "description": "Sunny",
+    "temperature": 30,
+    "humidity": 55,
+    "windSpeed": 12,
+    "weatherIcon": "https://dummyurl.com/sunny.png"
+  },
+  {
+    "location": "London",
+    "description": "Rainy",
+    "temperature": 18,
+    "humidity": 80,
+    "windSpeed": 10,
+    "weatherIcon": "https://dummyurl.com/rainy.png"
+  },
+  // Add more cities here...
+  {
+    "location": "Tokyo",
+    "description": "Cloudy",
+    "temperature": 22,
+    "humidity": 70,
+    "windSpeed": 15,
+    "weatherIcon": "https://dummyurl.com/cloudy.png"
+  },
+  {
+    "location": "Sydney",
+    "description": "Clear",
+    "temperature": 28,
+    "humidity": 50,
+    "windSpeed": 14,
+    "weatherIcon": "https://dummyurl.com/clear.png"
+  }
+];
+```
+
+Please note that this is just a sample dummy data and the weather information is not real. You can add more cities or modify the weather data as needed for your application. When you implement the actual weather API, you would replace this dummy data with the real API responses.
+Sure! Here's a dummy data object that you can use for currency conversion:
+
+```json
+const dummyExchangeRates = {
+  "baseCurrency": "USD",
+  "lastUpdated": "2023-07-20",
+  "rates": {
+    "USD": 1,
+    "EUR": 0.85,
+    "GBP": 0.73,
+    "JPY": 110.25,
+    "AUD": 1.33,
+    "CAD": 1.25,
+    "CHF": 0.92,
+    "CNY": 6.45,
+    "INR": 75.10,
+    "SGD": 1.37,
+    "AED": 3.67,
+    "NZD": 1.45,
+    "ZAR": 14.55,
+    "BRL": 5.25,
+    "MXN": 20.10,
+    "SEK": 8.92,
+    "NOK": 9.25,
+    "DKK": 6.60,
+    "RUB": 70.15,
+    "TRY": 8.20,
+    "KRW": 1150.50,
+    "IDR": 14200.25,
+    "MYR": 4.20,
+    "THB": 33.50,
+    "PLN": 3.70,
+    "HUF": 300.50,
+    "CZK": 22.75,
+    "ILS": 3.20,
+    "PHP": 50.25,
+    "HKD": 7.75,
+    "TWD": 28.60,
+    "ARS": 115.50
+  }
+};
+```
+
+In this dummy data, we have the following properties:
+
+- `baseCurrency`: A string representing the base currency for the exchange rates (e.g., "USD").
+- `lastUpdated`: A string representing the date when the exchange rates were last updated.
+- `rates`: An object containing the exchange rates for various currencies relative to the base currency. The keys are the currency codes (e.g., "EUR", "GBP") and the values are the exchange rates relative to 1 unit of the base currency.
+
+Again, please note that this is just a sample dummy data and the exchange rates are not real. You can modify or add more currencies and exchange rates as needed for your application. Once you implement the actual currency conversion API, you would replace this dummy data with the real API responses.

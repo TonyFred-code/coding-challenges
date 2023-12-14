@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci Sequence</title>
+  </head>
+  <body>
+    <h2>Fibonacci Sequence</h2>
+    <p>
+      Task: Implement a function that generates the Fibonacci sequence up to a given
+      number of terms.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      /*  utility function */
+      // function fibonacciSequence(terms = 10) {
+      //   if (terms <= 0) {
+      //     console.error("Number of terms to generate must be positive integer (n > 0)");
+      //     return null;
+      //   }
+
+      //   let first = 0;
+      //   let second = 1;
+      //   const sequence = [];
+      //   for (let i = 0; i < terms; i++) {
+      //     let term;
+      //     if (i === 0) {
+      //       term = first;
+      //       sequence.push(term);
+      //       continue;
+      //     } else if (i == 1) {
+      //       term = second;
+      //       sequence.push(term);
+      //       continue;
+      //     } else {
+      //       term = sequence[i - 2] + sequence[i - 1];
+      //       sequence.push(term);
+      //   }
+      //   }
+      //   return sequence;
+      // }
+
+      /* Example Usage */
+      function fibonacciSequence(terms = 10) {
+        if (terms <= 0) {
+          throw new Error(
+            "Number of terms to generate must be a positive integer (n > 0)"
+          );
+        } else if (terms === 1) {
+          return [0];
+        }
+
+        const sequence = [0, 1];
+
+        for (let i = 2; i < terms; i++) {
+          const previousTerm = sequence[i - 2];
+          const currentTerm = sequence[i - 1];
+          const term = previousTerm + currentTerm;
+          sequence.push(term);
+        }
+
+        return sequence;
+      }
+    </script>
+  </body>
+</html>

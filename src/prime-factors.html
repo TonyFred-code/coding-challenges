@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Factors</title>
+  </head>
+  <body>
+    <h2>Prime Factors</h2>
+    <p>
+      Task: Write a function that calculates and returns the prime factors of a given
+      number.
+    </p>
+
+    <div class="output"></div>
+
+    <script>
+      const output = document.querySelector(".output");
+
+      // utility function(s)
+      // Function to check if a given number is prime
+      function isPrime(number) {
+        if (number <= 1) {
+          return false;
+        }
+        if (number <= 3) {
+          return true;
+        }
+
+        if (number % 2 === 0 || number % 3 === 0) {
+          return false;
+        }
+
+        // Check for divisibility by numbers of the form 6k +/- 1 up to sqrt(number)
+        for (let i = 5; i <= Math.sqrt(number); i = i + 6) {
+          if (number % i === 0 || number % (i + 2) === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function checkPrimeFactors(number) {
+        const factors = [];
+        const primeFactors = [];
+
+        for (let i = 1; i <= number; i++) {
+          if (number % i === 0) {
+            factors.push(i);
+          }
+          if (isPrime(i) && number % i === 0) {
+            primeFactors.push(i);
+          }
+        }
+
+        return [factors, primeFactors];
+      }
+
+      //   example usage
+      function useUtility(number) {
+        let arr = checkPrimeFactors(number);
+
+        output.textContent = `Number to check = ${number}
+        Array of factors = ${arr[0].join(", ")};
+        Array of prime factors = ${arr[1].join(", ")}`;
+      }
+
+      useUtility(234);
+    </script>
+  </body>
+</html>

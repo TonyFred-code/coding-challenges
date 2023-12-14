@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savings Goal Tracker</title>
+  </head>
+  <body>
+    <h2>Challenge 2: Savings Goal Tracker</h2>
+    <p>
+      Summary: You want to save a certain amount of money and want to track how many
+      months it will take to reach your savings goal.
+    </p>
+    <p>Write a function called calculateSavingsMonths that takes three parameters:</p>
+    <ol>
+      <li>savingsGoal (number) - The amount of money you want to save (in dollars).</li>
+      <li>
+        monthlySavings (number) - The amount of money you can save per month (in dollars).
+      </li>
+      <li>
+        interestRate (number) - The annual interest rate on your savings account (in
+        percentage).
+      </li>
+    </ol>
+
+    <p>
+      The function should calculate and return the number of months it will take for you
+      to reach your savings goal, considering your monthly savings and the interest earned
+      on your savings account.
+    </p>
+
+    <script>
+      // utility function
+      function calculateSavingsMonths(savingsGoal, monthlySavings, interestRate) {
+        if (
+          typeof savingsGoal !== "number" ||
+          typeof monthlySavings !== "number" ||
+          typeof interestRate !== "number"
+        ) {
+          throw new Error("Invalid input");
+        }
+
+        let months = 0;
+        let currentSavings = 0;
+
+        while (currentSavings < savingsGoal) {
+          currentSavings += monthlySavings;
+          let monthlyInterest = (currentSavings * interestRate) / 1200;
+          currentSavings += monthlyInterest;
+          months++;
+        }
+
+        return { months: months, savings: currentSavings.toFixed(2) };
+      }
+    </script>
+  </body>
+</html>

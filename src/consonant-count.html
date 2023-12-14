@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consonant Count</title>
+  </head>
+  <body>
+    <h2>Challenge: Consonant Count</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>Write a function that counts the number of consonants in a given string</p>
+    </section>
+
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given a string containing only printable ASCII</p>
+      <p>
+        Implement a function to count the number of consonants in the string and return
+        the count
+      </p>
+    </section>
+
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: "hello"<br />
+        Output: 3
+      </p>
+
+      <p>
+        Input: "world"<br />
+        Output: 4
+      </p>
+    </section>
+
+    <script>
+      function isConsonant(char) {
+        const consonants = "bcdfghjklmnpqrstvwxyz";
+        return consonants.includes(char.toLowerCase());
+      }
+
+      function cleanString(string) {
+        return string.toLowerCase().replace(/[^a-z]/g, "");
+      }
+
+      function countConsonant(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          throw new Error("Invalid input. Use a non-empty string for parameter");
+        }
+
+        let lowerCaseString = cleanString(string);
+        let stringLen = lowerCaseString.length;
+        let consonantCount = 0;
+
+        for (let i = 0; i < stringLen; i++) {
+          let char = lowerCaseString[i];
+          if (isConsonant(char)) {
+            consonantCount++;
+          }
+        }
+
+        return consonantCount;
+      }
+    </script>
+  </body>
+</html>

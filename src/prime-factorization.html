@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Factorization</title>
+  </head>
+  <body>
+    <h2>Challenge: Prime Factorization</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>Write a function that finds the prime factors of a given integer</p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>You are given a positive integer as input</p>
+      <p>
+        Implement a function to find and return the prime factors of the input integer in
+        ascending order
+      </p>
+    </section>
+    <section>
+      <h3>Test cases</h3>
+      <p>
+        Input: 12 <br />
+        Output: [2, 2, 3]
+      </p>
+      <p>
+        Input: 25 <br />
+        Output: [5, 5]
+      </p>
+    </section>
+
+    <script>
+      // Function to check if a given number is prime
+      function isPrime(number) {
+        if (number <= 1) {
+          return false;
+        }
+        if (number <= 3) {
+          return true;
+        }
+
+        if (number % 2 === 0 || number % 3 === 0) {
+          return false;
+        }
+
+        // Check for divisibility by numbers of the form 6k +/- 1 up to sqrt(number)
+        for (let i = 5; i <= Math.sqrt(number); i = i + 6) {
+          if (number % i === 0 || number % (i + 2) === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      // Function to find the prime factors of a given integer
+      function primeFactorization(integer) {
+        if (Number.isNaN(integer) || typeof integer !== "number" || integer <= 0) {
+          throw new Error("Invalid input. Integer must be a positive non-zero number.");
+        }
+
+        const primeFactors = [];
+        // Find prime factors of the given integer by checking all numbers from 2 to (integer - 1)
+        for (let i = 2; i < integer; i++) {
+          if (isPrime(i) && integer % i === 0) {
+            primeFactors.push(i);
+          }
+        }
+
+        let n = integer;
+        const primeExpression = [];
+        let len = primeFactors.length;
+        // Build the prime factorization array using the prime factors
+        for (let i = 0; n > 1 && i < len; i++) {
+          let term = primeFactors[i];
+          while (n > 1 && n % term === 0) {
+            primeExpression.push(term);
+            n = n / term;
+          }
+        }
+
+        return primeExpression;
+      }
+    </script>
+  </body>
+</html>

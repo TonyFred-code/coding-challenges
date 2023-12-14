@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Missing Letters</title>
+  </head>
+  <body>
+    <h2>Challenge: Missing Letters</h2>
+    <section>
+      <h3>Summary</h3>
+      <p>
+        Write a function that finds the missing letter(s) in a given sequence of
+        consecutive letters.
+      </p>
+    </section>
+    <section>
+      <h3>Requirements</h3>
+      <p>
+        You are given a string containing a sequence of consecutive lowercase letters (in
+        alphabetical order), with one (or more) letter(s) missing
+      </p>
+      <p>Implement a function to find the missing letter(s) and return it.</p>
+    </section>
+    <section>
+      <h3>Test Cases</h3>
+      <p>
+        Input: "abcdefh"<br />
+        Output: "g"
+      </p>
+      <p>
+        Input: "jklmno"<br />
+        Output: "p"
+      </p>
+    </section>
+
+    <script>
+      function missingLetters(string) {
+        if (typeof string !== "string" || string.trim() === "") {
+          throw new TypeError("Invalid input. Must enter a non-empty string.");
+        }
+
+        let len = string.length;
+        let missing = "";
+
+        for (let i = 0; i < len; i++) {
+          let charCode = string.charCodeAt(i);
+          let nextLetter = string.charCodeAt(i + 1);
+          if (nextLetter - charCode !== 1) {
+            missing += String.fromCharCode(charCode + 1);
+          }
+        }
+
+        return missing;
+      }
+    </script>
+  </body>
+</html>
